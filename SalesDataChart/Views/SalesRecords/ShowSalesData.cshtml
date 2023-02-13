@@ -1,10 +1,13 @@
-﻿
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
 <input id="ID" value="Show Graph" type="button" />
+<br/>
 
-<canvas id="myChart" width="100" height="100"></canvas>
+<canvas id="myChart" style="max-width:400px;max-height:430px;"></canvas>
 
 
-
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script type="text/javascript">
@@ -12,13 +15,13 @@
     $(function(){
         $("#ID").click(function(){
             $.ajax({
-                type: "Post",
+                type: "POST",
                 url: "/SalesRecords/GetSalesData",
                 data: "",
                 contextType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: OnSuccessResult,
-                error: Onerror
+               // error: Onerror
             })
             function OnSuccessResult(data){
                 var _data=data;
@@ -42,9 +45,9 @@
                 })
             }
 
-            function OnError(err) {
+            //function OnError(err) {
 
-            }
+            //}
         })
     })
 
